@@ -252,7 +252,7 @@ conda install -c conda-forge netCDF4
 * Make sure [HDF5](http://www.h5py.org/) and netcdf-4 are installed, 
   and the `nc-config` utility is in your Unix PATH.
 
-* Run `python setup.py build`, then `pip install -e .`.
+* Run `pip install -e .`.
 
 * To run all the tests, execute `cd test && python run_all.py`.
 

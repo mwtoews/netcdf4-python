@@ -1,6 +1,7 @@
 [build-system]
 requires = [
     "Cython>=0.29",
+    "mpi4py",
     "oldest-supported-numpy",
     "setuptools>=61",
 ]
@@ -45,6 +46,22 @@ dependencies = [
     "numpy",
 ]
 dynamic = ["version"]
+
+[project.optional-dependencies]
+ci = [
+    "netCDF4[mpi,test]",
+#   "check-manifest",
+#   "twine",
+]
+mpi = [
+    "mpi4py",
+]
+docs = [
+    "pdoc",
+]
+test = [
+#   "pytest",
+]
 
 [project.scripts]
 nc3tonc4 = "netCDF4.utils:nc3tonc4"

@@ -69,13 +69,18 @@ def test(verbosity=1):
     runner.run(testsuite)
 
 if __name__ == '__main__':
-    import numpy, cython
-    sys.stdout.write('\n')
-    sys.stdout.write('netcdf4-python version: %s\n' % __version__)
-    sys.stdout.write('HDF5 lib version:       %s\n' % __hdf5libversion__)
-    sys.stdout.write('netcdf lib version:     %s\n' % __netcdf4libversion__)
-    sys.stdout.write('numpy version           %s\n' % numpy.__version__)
-    sys.stdout.write('cython version          %s\n' % cython.__version__)
+    import numpy
+    try:
+        import cython
+        cython_version = cython.__version__
+    except ImportError:
+        cython_version = "not installed"
+    print('')
+    print(f'netcdf4-python version: {__version__}')
+    print(f'HDF5 lib version:       {__hdf5libversion__}')
+    print(f'netcdf lib version:     {__netcdf4libversion__}')
+    print(f'numpy version:          {numpy.__version__}')
+    print(f'cython version:         {cython_version}')
     runner = unittest.TextTestRunner(verbosity=1)
     result = runner.run(testsuite)
     if not result.wasSuccessful():
